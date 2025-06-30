@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat | Match Dil</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-['Poppins'] bg-gray-50">
+    <!-- Chat Header -->
+    <div class="fixed top-0 inset-x-0 bg-white border-b border-gray-200 z-40">
+        <div class="max-w-lg mx-auto px-4 py-3">
+            <div class="flex items-center space-x-4">
+                <button onclick="window.location.href='messages.html'" class="text-gray-600 hover:text-gray-800">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <div class="flex items-center flex-1">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Sarah" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-white"></div>
+                    </div>
+                    <div class="ml-3">
+                        <h2 class="font-semibold">Sarah</h2>
+                        <p class="text-xs text-gray-500">Online</p>
+                    </div>
+                </div>
+                <button class="text-gray-600 hover:text-gray-800" id="chatMenuBtn">
+                    <i class="fas fa-ellipsis-v text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Messages -->
+    <div class="min-h-screen pb-20 pt-16">
+        <div class="max-w-lg mx-auto px-4">
+            <div class="space-y-4" id="messageContainer">
+                <!-- Date Separator -->
+                <div class="flex justify-center">
+                    <span class="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">Today</span>
+                </div>
+
+                <!-- Match Notification -->
+                <div class="flex justify-center">
+                    <div class="bg-pink-50 text-pink-600 px-4 py-2 rounded-full text-sm">
+                        You matched with Sarah on June 15
+                    </div>
+                </div>
+
+                <!-- Received Message -->
+                <div class="flex items-end space-x-2">
+                    <div class="flex-shrink-0 w-6 h-6 rounded-full overflow-hidden">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Sarah" class="w-full h-full object-cover">
+                    </div>
+                    <div class="max-w-[75%] bg-white rounded-2xl rounded-bl-none px-4 py-2 shadow-sm">
+                        <p>Hey! Thanks for the match! How are you doing? 😊</p>
+                        <span class="text-xs text-gray-500 mt-1">10:30 AM</span>
+                    </div>
+                </div>
+
+                <!-- Sent Message -->
+                <div class="flex items-end justify-end space-x-2">
+                    <div class="max-w-[75%] bg-pink-500 text-white rounded-2xl rounded-br-none px-4 py-2 shadow-sm">
+                        <p>Hi Sarah! I'm doing great, thanks! How about you?</p>
+                        <span class="text-xs text-pink-100 mt-1">10:32 AM</span>
+                    </div>
+                </div>
+
+                <!-- Received Message with Image -->
+                <div class="flex items-end space-x-2">
+                    <div class="flex-shrink-0 w-6 h-6 rounded-full overflow-hidden">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Sarah" class="w-full h-full object-cover">
+                    </div>
+                    <div class="max-w-[75%] space-y-2">
+                        <div class="bg-white rounded-2xl rounded-bl-none overflow-hidden shadow-sm">
+                            <img src="https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg" alt="Coffee shop" class="w-full h-48 object-cover">
+                            <div class="p-3">
+                                <p>I'm at this nice coffee shop right now! Would you like to join me? ☕</p>
+                                <span class="text-xs text-gray-500 mt-1">10:35 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typing Indicator -->
+                <div class="flex items-end space-x-2" id="typingIndicator" style="display: none;">
+                    <div class="flex-shrink-0 w-6 h-6 rounded-full overflow-hidden">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Sarah" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-white rounded-2xl rounded-bl-none px-4 py-3 shadow-sm">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Input -->
+    <div class="fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 z-40">
+        <div class="max-w-lg mx-auto px-4 py-2">
+            <form id="messageForm" class="flex items-end space-x-2">
+                <button type="button" class="text-gray-500 hover:text-gray-700 p-2">
+                    <i class="fas fa-image text-xl"></i>
+                </button>
+                <div class="flex-1 bg-gray-100 rounded-2xl">
+                    <textarea id="messageInput" 
+                              placeholder="Type a message..." 
+                              class="w-full bg-transparent border-none focus:ring-0 resize-none px-4 py-2 max-h-32"
+                              rows="1"></textarea>
+                </div>
+                <button type="submit" class="text-pink-500 hover:text-pink-600 p-2" id="sendButton" disabled>
+                    <i class="fas fa-paper-plane text-xl"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Menu Modal (Hidden by default) -->
+    <div id="chatMenu" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl">
+            <div class="max-w-lg mx-auto px-4 py-4">
+                <div class="space-y-4">
+                    <button class="w-full flex items-center space-x-3 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg">
+                        <i class="fas fa-user text-gray-500"></i>
+                        <span>View Profile</span>
+                    </button>
+                    <button class="w-full flex items-center space-x-3 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg">
+                        <i class="fas fa-bell-slash text-gray-500"></i>
+                        <span>Mute Notifications</span>
+                    </button>
+                    <button class="w-full flex items-center space-x-3 py-3 text-left text-red-500 hover:bg-gray-50 rounded-lg">
+                        <i class="fas fa-ban"></i>
+                        <span>Block & Report</span>
+                    </button>
+                    <button class="w-full flex items-center space-x-3 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg" id="closeChatMenu">
+                        <i class="fas fa-times text-gray-500"></i>
+                        <span>Cancel</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="js/chat.js"></script>
+</body>
+</html>
