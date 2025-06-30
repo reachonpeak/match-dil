@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Match Dil</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-['Poppins'] bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="max-w-md w-full">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <a href="/" class="text-4xl font-bold text-pink-500">Match Dil</a>
+                <p class="mt-2 text-gray-600">Create your account</p>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <form id="signupForm" class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required autocomplete="given-name"
+                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required autocomplete="family-name"
+                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" required autocomplete="email"
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="password" name="password" required autocomplete="new-password"
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500"
+                               minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                        <div class="mt-1 text-sm">
+                            <p class="text-gray-500 mb-2">Password must contain:</p>
+                            <ul class="space-y-1">
+                                <li id="length-check" class="flex items-center text-gray-500 transition-all duration-200">
+                                    <i class="fas fa-circle text-xs mr-2 transition-all duration-200"></i>
+                                    <span>At least 8 characters</span>
+                                </li>
+                                <li id="uppercase-check" class="flex items-center text-gray-500 transition-all duration-200">
+                                    <i class="fas fa-circle text-xs mr-2 transition-all duration-200"></i>
+                                    <span>One uppercase letter</span>
+                                </li>
+                                <li id="lowercase-check" class="flex items-center text-gray-500 transition-all duration-200">
+                                    <i class="fas fa-circle text-xs mr-2 transition-all duration-200"></i>
+                                    <span>One lowercase letter</span>
+                                </li>
+                                <li id="number-check" class="flex items-center text-gray-500 transition-all duration-200">
+                                    <i class="fas fa-circle text-xs mr-2 transition-all duration-200"></i>
+                                    <span>One number</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="birthdate" class="block text-sm font-medium text-gray-700">Birth Date</label>
+                        <input type="date" id="birthdate" name="birthdate" required autocomplete="bday"
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                        <p class="mt-1 text-sm text-gray-500">You must be at least 18 years old</p>
+                    </div>
+
+                    <div>
+                        <label for="gender" class="block text-sm font-medium text-gray-700">I am a</label>
+                        <select id="gender" name="gender" required 
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                            <option value="">Select gender</option>
+                            <option value="woman">Woman</option>
+                            <option value="man">Man</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="lookingFor" class="block text-sm font-medium text-gray-700">I want to meet</label>
+                        <select id="lookingFor" name="lookingFor" required 
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                            <option value="">Select preference</option>
+                            <option value="women">Women</option>
+                            <option value="men">Men</option>
+                            <option value="everyone">Everyone</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="terms" name="terms" required 
+                               class="h-4 w-4 text-pink-500 focus:ring-pink-500 border-gray-300 rounded">
+                        <label for="terms" class="ml-2 block text-sm text-gray-700">
+                            I agree to the <a href="#" class="text-pink-500 hover:text-pink-600">Terms of Service</a> and 
+                            <a href="#" class="text-pink-500 hover:text-pink-600">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submitButton"
+                            class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 relative">
+                        <span class="inline-flex items-center">
+                            <span class="submit-text">Create Account</span>
+                            <span class="loading-spinner ml-2 hidden">
+                                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Form validation message -->
+                <div id="formMessage" class="mt-4 text-center hidden">
+                    <p class="text-sm font-medium"></p>
+                </div>
+
+                <!-- Social Signup -->
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">Or sign up with</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-2 gap-3">
+                        <button type="button" 
+                                class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                            <i class="fab fa-google mr-2"></i>
+                            Google
+                        </button>
+                        <button type="button" 
+                                class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                            <i class="fab fa-facebook-f mr-2"></i>
+                            Facebook
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Login link -->
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">
+                        Already have an account? 
+                        <a href="login.html" class="font-medium text-pink-500 hover:text-pink-600">Log in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="js/auth.js"></script>
+</body>
+</html>
